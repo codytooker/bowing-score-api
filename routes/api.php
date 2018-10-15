@@ -11,6 +11,6 @@ Route::prefix('auth')->group(function () {
     Route::post('me', 'AuthController@me');
 });
 
-Route::middleware('jwt.verify')->group(function () {
+Route::group(['middleware' => 'jwt.verify'], function () {
     Route::post('game', 'GameController@store');
 });
