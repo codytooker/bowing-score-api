@@ -25,7 +25,12 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $user = auth()->user();
+        $game = $user->games()->create([
+            'title' => $request->title,
+        ]);
+        
+        return response()->json(compact('game'));
     }
 
     /**
