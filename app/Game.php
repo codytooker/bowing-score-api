@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
+    protected $guarded = [];
+    
     /**
      * Get the User the Game belongs to.
      *
