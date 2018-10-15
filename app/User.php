@@ -53,4 +53,14 @@ class User extends Authenticatable implements JWTSubject
             ]
         ];
     }
+
+    /**
+     * Get all games of the user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function games()
+    {
+        return $this->hasMany('App\Game');
+    }
 }
