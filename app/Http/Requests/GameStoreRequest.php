@@ -13,7 +13,7 @@ class GameStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->id === request()->user;
     }
 
     /**
@@ -25,6 +25,7 @@ class GameStoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string|min:6',
+            'user'  => 'required|integer',
         ];
     }
 }
