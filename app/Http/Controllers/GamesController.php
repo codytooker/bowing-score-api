@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use Illuminate\Http\Request;
+use App\Http\Requests\GameStoreRequest;
 
 class GamesController extends Controller
 {
@@ -25,7 +26,7 @@ class GamesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GameStoreRequest $request)
     {
         $user = auth()->user();
         $game = $user->games()->create([
