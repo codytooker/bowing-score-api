@@ -14,7 +14,9 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        $games = auth()->user()->games;
+
+        return response()->json(compact('games'));
     }
 
     /**
