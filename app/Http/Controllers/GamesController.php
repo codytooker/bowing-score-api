@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Game;
 use Illuminate\Http\Request;
 use App\Http\Requests\GameStoreRequest;
+use App\Http\Resources\Game as GameResource;
+use App\Http\Resources\GameCollection;
 
 class GamesController extends Controller
 {
@@ -17,7 +19,7 @@ class GamesController extends Controller
     {
         $games = auth()->user()->games;
 
-        return response()->json(compact('games'));
+        return new GameCollection($games);
     }
 
     /**
@@ -33,7 +35,7 @@ class GamesController extends Controller
             'title' => $request->title,
         ]);
         
-        return response()->json(compact('game'));
+        return new GameResource($game);
     }
 
     /**
