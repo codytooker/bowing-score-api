@@ -16,6 +16,15 @@ class UsersTableSeeder extends Seeder
             'name' => 'cody',
             'email' => 'cody@cody.com',
             'password' => bcrypt('password'),
-        ]);
+        ])->each(function ($user) {
+            $user->games()->saveMany(factory(App\Game::class, 5)->make())
+            ->each(function ($game) {
+                for ($i=1; $i <= 10; $i++) {
+                    $game->frames()->save(factory(App\Frame::class)->create([
+                        'number' => $i,
+                    ]));
+                }
+            });
+        });
     }
 }
