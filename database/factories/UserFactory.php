@@ -26,7 +26,7 @@ $factory->define(App\Game::class, function (Faker $faker) {
     return [
         'title' => $faker->word(),
         'user_id' => function () {
-            return factory('App\User')->create()->id;
+            return factory('App\User')->make()->id;
         },
     ];
 });
@@ -34,7 +34,7 @@ $factory->define(App\Game::class, function (Faker $faker) {
 $factory->define(App\Frame::class, function (Faker $faker) {
     return [
         'game_id' => function () {
-            return factory('App\Game')->create()->id;
+            return factory('App\Game')->make()->id;
         },
         'number' => $faker->numberBetween(1, 10),
         'throw_1' => '[1,2,3]',
