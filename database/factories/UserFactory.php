@@ -37,7 +37,7 @@ $factory->define(App\Frame::class, function (Faker $faker) {
             return factory('App\Game')->make()->id;
         },
         'number' => $faker->numberBetween(1, 10),
-        'throw_1' => '[1,2,3]',
-        'throw_2' => '[4,5,6]',
+        'throw_1' => json_encode([1,2,3]),
+        'throw_2' => json_encode([4,5,6]),
     ];
 });

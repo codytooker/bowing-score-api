@@ -18,6 +18,7 @@ class GamesController extends Controller
     public function index()
     {
         $games = auth()->user()->games;
+        $games->load('frames');
 
         return new GameCollection($games);
     }

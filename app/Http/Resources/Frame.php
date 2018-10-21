@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\FrameCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Game extends JsonResource
+class Frame extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +16,10 @@ class Game extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'date' => $this->created_at->toDateTimeString(),
-            'frames' => new FrameCollection($this->frames),
+            'number' => $this->number,
+            'throw_1' => $this->throw_1,
+            'throw_2' => $this->throw_2,
+            'throw_3' => $this->throw_3,
         ];
     }
 }
