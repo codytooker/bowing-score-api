@@ -17,6 +17,7 @@ class CreateGamesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('title');  // This is temporary so that our form on the front end can exists;
+            $table->unsignedTinyInteger('score')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
