@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Frame extends Model
 {
-    // protected $hidden = [
-    //     'created_at', 'updated_at',
-    // ];
-
     protected $casts = [
         'number'  => 'integer',
         'throw_1' => 'array',
