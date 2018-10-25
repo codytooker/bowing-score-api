@@ -27,4 +27,13 @@ class Game extends Model
     {
         return $this->hasMany('App\Frame');
     }
+
+    public function createFrames()
+    {
+        for ($i=1; $i <= 10; $i++) {
+            $this->frames()->create([
+                'number' => $i,
+            ]);
+        }
+    }
 }

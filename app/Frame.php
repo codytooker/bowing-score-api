@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Frame extends Model
 {
+    protected $fillable = [
+        'number',
+    ];
+    
     protected $casts = [
         'number'  => 'integer',
         'throw_1' => 'array',

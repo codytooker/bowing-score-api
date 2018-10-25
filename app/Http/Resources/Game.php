@@ -20,6 +20,7 @@ class Game extends JsonResource
             'title' => $this->title,
             'date' => $this->created_at->toDateTimeString(),
             'frames' => new FrameCollection($this->frames),
+            'score' => $this->score,
         ];
     }
 }

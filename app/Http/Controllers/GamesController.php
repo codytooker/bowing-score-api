@@ -35,6 +35,8 @@ class GamesController extends Controller
         $game = $user->games()->create([
             'title' => $request->title,
         ]);
+
+        $game->createFrames();
         
         return new GameResource($game);
     }

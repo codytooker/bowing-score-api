@@ -14,4 +14,6 @@ Route::prefix('auth')->group(function () {
 Route::group(['middleware' => 'jwt.verify'], function () {
     Route::get('games', 'GamesController@index');
     Route::post('games', 'GamesController@store');
+    
+    Route::patch('frames/{frame}', 'FramesController@update');
 });
