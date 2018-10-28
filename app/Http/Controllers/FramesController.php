@@ -6,6 +6,7 @@ use App\Http\Requests\FrameUpdateRequest;
 use App\Frame;
 use App\Http\Resources\Frame as FrameResource;
 use Illuminate\Http\Response;
+use App\Http\Resources\Game as GameResource;
 
 class FramesController extends Controller
 {
@@ -20,12 +21,17 @@ class FramesController extends Controller
     {
         $frame["throw_{$request->ball}"] = $request->pins;
 
-        // if we are updating the first ball of a frame we need to clear out the second ball as well.
         if ($request->ball === 1) {
             $frame->throw_2 = null;
+            $frame->throw_3 = null;
+        } elseif ($request->ball === 2 && $frame->number === 10) {
+            $frame->throw_3 = null;
         }
         $frame->save();
 
-        return response(new FrameResource($frame), 202);
+        $game = $frame->game;
+        $game = $game->scoreEachFrame();
+
+        return new GameResource($game);
     }
 }

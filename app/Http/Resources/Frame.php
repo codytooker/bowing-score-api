@@ -20,7 +20,7 @@ class Frame extends JsonResource
             'throw_1' => $this->throw_1,
             'throw_2' => $this->throw_2,
             'throw_3' => $this->throw_3,
-            'score' => $this->score,
+            'score' => is_null($this->score) ? $this->score : (int)$this->score,
         ];
     }
 }

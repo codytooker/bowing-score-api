@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Bowling\FrameScorer;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
@@ -35,5 +37,16 @@ class Game extends Model
                 'number' => $i,
             ]);
         }
+    }
+
+    public function scoreEachFrame()
+    {
+        $frames = $this->frames()->whereNotNull('throw_1')->orderBy('number')->get();
+
+        $newFrames = new FrameScorer($frames);
+
+        $this->frames()->saveMany($newFrames->score());
+
+        return $this;
     }
 }
