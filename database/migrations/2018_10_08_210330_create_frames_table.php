@@ -20,7 +20,7 @@ class CreateFramesTable extends Migration
             $table->string('throw_1')->nullable();
             $table->string('throw_2')->nullable();
             $table->string('throw_3')->nullable();
-            $table->unsignedTinyInteger('score')->nullable();
+            $table->unsignedSmallInteger('score')->nullable();
             $table->timestamps();
 
             $table->foreign('game_id')
