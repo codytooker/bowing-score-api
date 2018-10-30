@@ -53,7 +53,11 @@ class FrameScorer
                     $bonus = $bonus + count($this->frames[$key + 2]->throw_1);
                 }
             } else {
-                $bonus = count($this->frames[$key + 1]->throw_1) + count($this->frames[$key + 1]->throw_2);
+                $bonus = count($this->frames[$key + 1]->throw_1);
+
+                if (isset($this->frames[$key + 1]->throw_2)) {
+                    $bonus = $bonus + count($this->frames[$key + 1]->throw_2);
+                }
             }
         }
 
@@ -79,7 +83,7 @@ class FrameScorer
         if (isset($this->frames[$key]->throw_2)) {
             $total = $total + count($this->frames[$key]->throw_2);
         }
-        
+
         $this->total = $total;
     }
 }
