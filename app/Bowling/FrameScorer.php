@@ -21,7 +21,7 @@ class FrameScorer
                 $this->scoreTheTenth($key);
             } elseif (count($frame->throw_1) === 10) {
                 $this->scoreStrike($key);
-            } elseif (count($frame->throw_1) + count($frame->throw_2) === 10) {
+            } elseif (isset($frame->throw_2) && count($frame->throw_1) + count($frame->throw_2) === 10) {
                 $this->scoreSpare($key);
             } else {
                 $this->scoreBasic($key);
@@ -74,6 +74,12 @@ class FrameScorer
 
     private function scoreBasic($key)
     {
-        $this->total = $this->total + count($this->frames[$key]->throw_1) + count($this->frames[$key]->throw_2);
+        $total = $this->total + count($this->frames[$key]->throw_1);
+
+        if (isset($this->frames[$key]->throw_2)) {
+            $total = $total + count($this->frames[$key]->throw_2);
+        }
+        
+        $this->total = $total;
     }
 }
