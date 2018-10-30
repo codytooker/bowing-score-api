@@ -35,7 +35,7 @@ class FrameScorer
 
     protected function scoreTheTenth($key)
     {
-        $total = count($this->frames[$key]->throw_1);
+        $total = $this->total + count($this->frames[$key]->throw_1);
 
         if (isset($this->frames[$key]->throw_2)) {
             $total = $total + count($this->frames[$key]->throw_2);
