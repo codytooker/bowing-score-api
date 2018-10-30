@@ -57,7 +57,7 @@ class FrameScorer
             if (count($this->frames[$key + 1]->throw_1) === 10) {
                 $bonus = 10;
                 
-                if ($this->frames[$key]->number === 9) {
+                if ($this->frames[$key]->number === 9 && isset($this->frames[$key + 1]->throw_2)) {
                     $bonus = $bonus + count($this->frames[$key + 1]->throw_2);
                 } elseif (isset($this->frames[$key + 2])) {
                     $bonus = $bonus + count($this->frames[$key + 2]->throw_1);
